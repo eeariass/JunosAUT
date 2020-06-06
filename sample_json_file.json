@@ -1,0 +1,25 @@
+
+{
+    "hostname" : "r1",
+    "in_production" : true,
+    "location": {
+        "address" : "Park Street, 34",
+        "room" : "202B",
+        "rack" : "4A",
+        "place_in_rack": 8
+    },
+    "interfaces" : [
+        {
+            "name" : "ge-0/0/0.0",
+            "ip_address" : "dhcp",
+            "description" : "interface ge-0/0/0 unit 0 - dhcp"
+        },
+        {
+            "name" : "ge-0/0/1.0",
+            "ip_address" : "10.124.92.1/24",
+            "description" : "interface ge-0/0/1 unit 1 - inet"
+        }
+    ],
+    "alarms" : [],
+    "rma_id" : null
+}
