@@ -8,9 +8,13 @@ from jnpr.junos import *
 from lxml import etree
 import json
 
-hostname = input('insert hostname or ip address: ')
-username = input ('insert username: ')
-passwd = getpass('insert password: ')
+#hostname = input('insert hostname or ip address: ')
+#username = input ('insert username: ')
+#passwd = getpass('insert password: ')
+
+host='192.168.0.10'
+user='root'
+password='lab123'
 
 print('')
 
