@@ -1,0 +1,36 @@
+#! /usr/local/bin/python3
+
+#This is a [work in progress] to make the input of EN-TRA, parse the ACL's and get back someinfo
+
+import sys
+from getpass import getpass
+from jnpr.junos import Device
+from jnpr.junos.exception import ConnectError
+from pprint import pprint
+
+hostname=input('Enter device hostname / IP address: ')
+junos_username = input('Junos username: ')
+junos_password = getpass('Junos password: ')
+
+dev = Device(host=hostname, user=junos_username, password=junos_password)
+try:
+    dev.open()
+except KeyboardInterrupt as err:
+    print(err)
+    sys.exit(1)
+except ConnectError as err:
+    print('Cannot connect to device: {0}'.format(err))
+    sys.exit(1)
+except Exception as err:
+    print(err)
+    sys.exit(1)
+
+print('The general device info is:\n')
+pprint(dev.facts)
+
+print('\n The route list is: \n')
+route_lxml_element = dev.rpc.get_route_information(table='inet.0')
+list_of_routes = route_lxml_element.findall('.//rt')
+for route in list_of_routes:
+    print("Route: {} Protocol: {}".format(route.findtext('rt-destination').strip(),route.findtext('rt-entry/protocol-name').strip()))
+dev.close

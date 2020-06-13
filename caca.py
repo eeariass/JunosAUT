@@ -5,7 +5,5 @@ import json
 
 dev = Device(host='192.168.0.10', user='root', password='lab123')
 dev.open()
-junosGeneralInfo = dev.facts()
+print(dev.facts)
 dev.close()
-
-pprint(junosGeneralInfo)
