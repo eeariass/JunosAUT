@@ -8,7 +8,4 @@ getOperationalBGP = dev.rpc.get_bgp_summary_information
 #getNotOperationalBGP = dev.rpc.get_bgp_summary_information(table !='Established')
 print(getOperationalBGP)
 
-
-
-
 dev.close()
